@@ -1,0 +1,35 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: >-
+  AOD analysis using MAIAC and AERONET During the 2020
+  Wildfire Season in Southeastern South America
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Maria Fernanda
+    family-names: Valle Seijo
+    email: valleseijo@ifir-conicet.gov.ar
+    affiliation: IFIR (CONICET-UNR)
+    orcid: 'https://orcid.org/0009-0004-9235-1891'
+repository-code: >-
+  https://github.com/Fernandavalleseijo/AOD_MAIAC-MODIS_AERONET
+abstract: >-
+  This software provides R scripts to analyze aerosol
+  optical depth (AOD) data from MAIAC/MODIS and AERONET. It
+  enables users to process datasets, generate visualizations
+  and reproduce statistical results. The project focuses on
+  understanding the impact of biomass burning during the
+  2020 wildfire season in Southeastern South America.
+keywords:
+  - AOD
+  - MAIAC
+  - AERONET
+  - Wildfires
+  - South America
+license: GPL-3.0
+version: 1.0.0
+date-released: '2025-01-25'
