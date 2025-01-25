@@ -4,15 +4,15 @@ GENERAL INFORMATION
 
 Title of Dataset: MCD19A2 v061 MODIS/Terra+Aqua Land Aerosol Optical Depth Daily L2G Global 1 km SIN Grid
 
-Author/Principal Investigator Information:
-Name: Alexei Lyapustin
-ORCID: 0000-0003-1105-5739
-Institution: NASA Goddard Space Flight Center, Greenbelt, Maryland
-Email: Alexei.I.Lyapustin@nasa.gov
+- Author/Principal Investigator Information:
+- Name: Alexei Lyapustin
+- ORCID: 0000-0003-1105-5739
+- Institution: NASA Goddard Space Flight Center, Greenbelt, Maryland
+- Email: Alexei.I.Lyapustin@nasa.gov
 
 Point of Contact:
-Yujie Wang 
-yujie.wang@nasa.gov
+- Yujie Wang 
+- yujie.wang@nasa.gov
 
 Date of data collection: 14/10/2024 - 21/10/2024
 Information about geographic location of data collection: h12.v12, h12v11, h13v11, h12v12 (tiles used for this project)
@@ -76,151 +76,151 @@ Description of methods used for data processing:
 DATA-SPECIFIC INFORMATION 
 
 Geographic Grid Projection Parameters:
-     Sinusoidal Projection
-     Projection            GCTP_SNSOID
-     ProjParam[0]          6371007.181
-     ProjParam[1 to 7]     0.0
-     ProjParam[8]          0.0
-     ProjParam[9]          0.0
-     ProjParam[10]         0.0
-     ProjParam[11 to 12]   0.0
-     Spherecode            -1
-     GridOrigin            HDFE_CENTER
+-     Sinusoidal Projection
+-     Projection            GCTP_SNSOID
+-     ProjParam[0]          6371007.181
+-     ProjParam[1 to 7]     0.0
+-     ProjParam[8]          0.0
+-     ProjParam[9]          0.0
+-     ProjParam[10]         0.0
+-     ProjParam[11 to 12]   0.0
+-     Spherecode            -1
+-     GridOrigin            HDFE_CENTER
 
 dimensions:
-	Orbits:grid5km = variable (defined by global attribute Orbit_amount);
-	YDim:grid5km = 240 ;
-	XDim:grid5km = 240 ;
-	Orbits:grid1km = variable (defined by global attribute Orbit_amount);
-	YDim:grid1km = 1200 ;
-	XDim:grid1km = 1200 ;
+-	Orbits:grid5km = variable (defined by global attribute Orbit_amount);
+-	YDim:grid5km = 240 ;
+-	XDim:grid5km = 240 ;
+-	Orbits:grid1km = variable (defined by global attribute Orbit_amount);
+-	YDim:grid1km = 1200 ;
+-	XDim:grid1km = 1200 ;
  
 variables:
-	short cosSZA(Orbits:grid5km, YDim:grid5km, XDim:grid5km) ;
-		cosSZA:long_name = "cosine of Solar Zenith Angle" ;
-		cosSZA:scale_factor = 0.0001 ;
-		cosSZA:add_offset = 0. ;
-		cosSZA:unit = "none" ;
-		cosSZA:_FillValue = -28672s ;
-		cosSZA:valid_range = 0s, 10000s ;
-	short cosVZA(Orbits:grid5km, YDim:grid5km, XDim:grid5km) ;
-		cosVZA:long_name = "cosine of View Zenith Angle" ;
-		cosVZA:scale_factor = 0.0001 ;
-		cosVZA:add_offset = 0. ;
-		cosVZA:unit = "none" ;
-		cosVZA:_FillValue = -28672s ;
-		cosVZA:valid_range = 0s, 10000s ;
-	short RelAZ(Orbits:grid5km, YDim:grid5km, XDim:grid5km) ;
-		RelAZ:long_name = "Relative Azimuth Angle" ;
-		RelAZ:scale_factor = 0.01 ;
-		RelAZ:add_offset = 0. ;
-		RelAZ:unit = "none" ;
-		RelAZ:_FillValue = -28672s ;
-		RelAZ:valid_range = -18000s, 18000s ;
-	short Scattering_Angle(Orbits:grid5km, YDim:grid5km, XDim:grid5km) ;
-		Scattering_Angle:long_name = "Scattering Angle" ;
-		Scattering_Angle:scale_factor = 0.01 ;
-		Scattering_Angle:add_offset = 0. ;
-		Scattering_Angle:unit = "none" ;
-		Scattering_Angle:_FillValue = -28672s ;
-		Scattering_Angle:valid_range = -18000s, 18000s ;
-	short Glint_Angle(Orbits:grid5km, YDim:grid5km, XDim:grid5km) ;
-		Glint_Angle:long_name = "Glint Angle" ;
-		Glint_Angle:scale_factor = 0.01 ;
-		Glint_Angle:add_offset = 0. ;
-		Glint_Angle:unit = "none" ;
-		Glint_Angle:_FillValue = -28672s ;
-		Glint_Angle:valid_range = -18000s, 18000s ;
-	short Optical_Depth_047(Orbits:grid1km, YDim:grid1km, XDim:grid1km) ;
-		Optical_Depth_047:long_name = "AOT at 0.47 micron" ;
-		Optical_Depth_047:scale_factor = 0.001 ;
-		Optical_Depth_047:add_offset = 0. ;
-		Optical_Depth_047:unit = "none" ;
-		Optical_Depth_047:_FillValue = -28672s ;
-		Optical_Depth_047:valid_range = -100s, 4000s ;
-	short Optical_Depth_055(Orbits:grid1km, YDim:grid1km, XDim:grid1km) ;
-		Optical_Depth_055:long_name = "AOT at 0.55 micron" ;
-		Optical_Depth_055:scale_factor = 0.001 ;
-		Optical_Depth_055:add_offset = 0. ;
-		Optical_Depth_055:unit = "none" ;
-		Optical_Depth_055:_FillValue = -28672s ;
-		Optical_Depth_055:valid_range = -100s, 4000s ;
-	short AOT_Uncertainty(Orbits:grid1km, YDim:grid1km, XDim:grid1km) ;
-		AOT_Uncertainty:long_name = "AOT uncertainty at 0.47 micron, range 0-4" ;
-		AOT_Uncertainty:scale_factor = 0.0001 ;
-		AOT_Uncertainty:add_offset = 0. ;
-		AOT_Uncertainty:unit = "mm" ;
-		AOT_Uncertainty:_FillValue = -28672s ;
-		AOT_Uncertainty:valid_range = 0s, 30000s ;
-	short FineModeFraction(Orbits:grid1km, YDim:grid1km, XDim:grid1km) ;
-		FineModeFraction:long_name = "Find mode fraction for Ocean" ;
-		FineModeFraction:scale_factor = 0.0001 ;
-		FineModeFraction:add_offset = 0. ;
-		FineModeFraction:unit = "none" ;
-		FineModeFraction:_FillValue = -28672s ;
-		FineModeFraction:valid_range = 0s, 10000s ;
-	short Column_WV(Orbits:grid1km, YDim:grid1km, XDim:grid1km) ;
-		Column_WV:long_name = "Column Water Vapor (in cm liquid water)" ;
-		Column_WV:scale_factor = 0.001 ;
-		Column_WV:add_offset = 0. ;
-		Column_WV:unit = "cm" ;
-		Column_WV:_FillValue = -28672s ;
-		Column_WV:valid_range = 0s, 30000s ;
-	short AOT_QA(Orbits:grid1km, YDim:grid1km, XDim:grid1km) ;
-		AOT_QA:long_name = "AOT_QA" ;
-		AOT_QA:unit = "none" ;
-		AOT_QA:data description = "Bits\tDefinition\n",
-    "0-2    Cloud Mask\n",
-    "       000 --- Undefined\n",
-    "       001 --- Clear\n",
-    "       010 --- Possible Cloudy\n",
-    "       011 --- Cloudy \n",
-    "       101 --- Cloud shadow\n",
-    "       110 --- Fire hotspot\n",
-    "       111 --- Water Sediments\n",
-    "3-4    Land Water Snow/ice  Mask\n",
-    "       00 --- Land\n",
-    "       01 --- Water\n",
-    "       10 --- Snow\n",
-    "       11 --- Ice\n",
-    "5-7  Adjacency Mask\n",
-    "       000 --- Normal condition\n",
-    "       001 --- Adjacent to cloud\n",
-    "       010 --- Surrounded by more than 8 cloudy pixels\n",
-    "       011 --- Single cloudy pixel\n",
-    "       100 --- Adjacent to snow\n",
-    "       101 --- Snow was previously detected for this pixel\n",
-    "8-11 QA AOT \n",
-    "       0000 --- Best quality \n",
-    "       0001 --- Water Sediments are detected\n",
-    "       0010 --- AC over water done, but AOT>0.5\n",
-    "       0011 --- There is 1 neighbor cloud\n",
-    "       0100 --- There is >1 neighbor clouds\n",
-    "       0101 --- no retrieval (cloudy, or whatever)\n",
-    "       0110 --- no retrievals near detected or previously snow\n",
-    "       0111 --- Climatology AOT: altituide above 3.5km(water), and 4.2km(land)\n",
-    "       1000 --- no retrieval due to sun glint\n",
-    "       1001 --- retrieved AOT is very low (<0.05) due to glint\n",
-    "       1010 --- AOT within +-2km from the coastline is replaced by nearby AOT\n",
-    "       1011 --- Land, Reserach Quality: AOT retrieved but CM is possibly cloudy\n",
-    "12    Glint mask\n",
-    "       0 --- glint is not detected\n",
-    "       1 --- glint is detected\n",
-    "13-14 Aerosol model\n",
-    "       00 --- background model\n",
-    "       01 --- Smoke model\n",
-    "       10 --- Dust model\n",
-    "15  Reserved",
-    "" ;
-		AOT_QA:_FillValue = 0s ;
-		AOT_QA:valid_range = 0s, 255s ;
-	byte AOT_MODEL(Orbits:grid1km, YDim:grid1km, XDim:grid1km) ;
-		AOT_MODEL:long_name = "AOT model used in retrieval" ;
-		AOT_MODEL:unit = "none" ;
-		AOT_MODEL:_FillValue = '\377' ;
-		AOT_MODEL:valid_range = '\0', '\12' ;
-	float Injection_Height(Orbits:grid1km, YDim:grid1km, XDim:grid1km) ;
-		Injection_Height:long_name = "Smoke Injection Height over local surface height, in km" ;
-		Injection_Height:unit = "meter" ;
-		Injection_Height:_FillValue = -99999.f ;
-		Injection_Height:valid_range = 0.f, 0.f ;
+-	short cosSZA(Orbits:grid5km, YDim:grid5km, XDim:grid5km) ;
+-		cosSZA:long_name = "cosine of Solar Zenith Angle" ;
+-		cosSZA:scale_factor = 0.0001 ;
+-		cosSZA:add_offset = 0. ;
+-		cosSZA:unit = "none" ;
+-		cosSZA:_FillValue = -28672s ;
+-		cosSZA:valid_range = 0s, 10000s ;
+-	short cosVZA(Orbits:grid5km, YDim:grid5km, XDim:grid5km) ;
+-		cosVZA:long_name = "cosine of View Zenith Angle" ;
+-		cosVZA:scale_factor = 0.0001 ;
+-		cosVZA:add_offset = 0. ;
+-		cosVZA:unit = "none" ;
+-		cosVZA:_FillValue = -28672s ;
+-		cosVZA:valid_range = 0s, 10000s ;
+-	short RelAZ(Orbits:grid5km, YDim:grid5km, XDim:grid5km) ;
+-		RelAZ:long_name = "Relative Azimuth Angle" ;
+-		RelAZ:scale_factor = 0.01 ;
+-		RelAZ:add_offset = 0. ;
+-		RelAZ:unit = "none" ;
+-		RelAZ:_FillValue = -28672s ;
+-		RelAZ:valid_range = -18000s, 18000s ;
+-	short Scattering_Angle(Orbits:grid5km, YDim:grid5km, XDim:grid5km) ;
+-		Scattering_Angle:long_name = "Scattering Angle" ;
+-		Scattering_Angle:scale_factor = 0.01 ;
+-		Scattering_Angle:add_offset = 0. ;
+-		Scattering_Angle:unit = "none" ;
+-		Scattering_Angle:_FillValue = -28672s ;
+-		Scattering_Angle:valid_range = -18000s, 18000s ;
+-	short Glint_Angle(Orbits:grid5km, YDim:grid5km, XDim:grid5km) ;
+-		Glint_Angle:long_name = "Glint Angle" ;
+-		Glint_Angle:scale_factor = 0.01 ;
+-		Glint_Angle:add_offset = 0. ;
+-		Glint_Angle:unit = "none" ;
+-		Glint_Angle:_FillValue = -28672s ;
+-		Glint_Angle:valid_range = -18000s, 18000s ;
+-	short Optical_Depth_047(Orbits:grid1km, YDim:grid1km, XDim:grid1km) ;
+-		Optical_Depth_047:long_name = "AOT at 0.47 micron" ;
+-		Optical_Depth_047:scale_factor = 0.001 ;
+-		Optical_Depth_047:add_offset = 0. ;
+-		Optical_Depth_047:unit = "none" ;
+-		Optical_Depth_047:_FillValue = -28672s ;
+-		Optical_Depth_047:valid_range = -100s, 4000s ;
+-	short Optical_Depth_055(Orbits:grid1km, YDim:grid1km, XDim:grid1km) ;
+-		Optical_Depth_055:long_name = "AOT at 0.55 micron" ;
+-		Optical_Depth_055:scale_factor = 0.001 ;
+-		Optical_Depth_055:add_offset = 0. ;
+-		Optical_Depth_055:unit = "none" ;
+-		Optical_Depth_055:_FillValue = -28672s ;
+-		Optical_Depth_055:valid_range = -100s, 4000s ;
+-	short AOT_Uncertainty(Orbits:grid1km, YDim:grid1km, XDim:grid1km) ;
+-		AOT_Uncertainty:long_name = "AOT uncertainty at 0.47 micron, range 0-4" ;
+-		AOT_Uncertainty:scale_factor = 0.0001 ;
+-		AOT_Uncertainty:add_offset = 0. ;
+-		AOT_Uncertainty:unit = "mm" ;
+-		AOT_Uncertainty:_FillValue = -28672s ;
+-		AOT_Uncertainty:valid_range = 0s, 30000s ;
+-	short FineModeFraction(Orbits:grid1km, YDim:grid1km, XDim:grid1km) ;
+-		FineModeFraction:long_name = "Find mode fraction for Ocean" ;
+-		FineModeFraction:scale_factor = 0.0001 ;
+-		FineModeFraction:add_offset = 0. ;
+-		FineModeFraction:unit = "none" ;
+-		FineModeFraction:_FillValue = -28672s ;
+-		FineModeFraction:valid_range = 0s, 10000s ;
+-	short Column_WV(Orbits:grid1km, YDim:grid1km, XDim:grid1km) ;
+-		Column_WV:long_name = "Column Water Vapor (in cm liquid water)" ;
+-		Column_WV:scale_factor = 0.001 ;
+-		Column_WV:add_offset = 0. ;
+-		Column_WV:unit = "cm" ;
+-		Column_WV:_FillValue = -28672s ;
+-		Column_WV:valid_range = 0s, 30000s ;
+-	short AOT_QA(Orbits:grid1km, YDim:grid1km, XDim:grid1km) ;
+-		AOT_QA:long_name = "AOT_QA" ;
+-		AOT_QA:unit = "none" ;
+-		AOT_QA:data description = "Bits\tDefinition\n",
+-    "0-2    Cloud Mask\n",
+-    "       000 --- Undefined\n",
+-    "       001 --- Clear\n",
+-    "       010 --- Possible Cloudy\n",
+-    "       011 --- Cloudy \n",
+-    "       101 --- Cloud shadow\n",
+-    "       110 --- Fire hotspot\n",
+-    "       111 --- Water Sediments\n",
+-    "3-4    Land Water Snow/ice  Mask\n",
+-    "       00 --- Land\n",
+-    "       01 --- Water\n",
+-    "       10 --- Snow\n",
+-    "       11 --- Ice\n",
+-    "5-7  Adjacency Mask\n",
+-    "       000 --- Normal condition\n",
+-    "       001 --- Adjacent to cloud\n",
+-    "       010 --- Surrounded by more than 8 cloudy pixels\n",
+-    "       011 --- Single cloudy pixel\n",
+-    "       100 --- Adjacent to snow\n",
+-    "       101 --- Snow was previously detected for this pixel\n",
+-    "8-11 QA AOT \n",
+-    "       0000 --- Best quality \n",
+-    "       0001 --- Water Sediments are detected\n",
+-    "       0010 --- AC over water done, but AOT>0.5\n",
+-    "       0011 --- There is 1 neighbor cloud\n",
+-    "       0100 --- There is >1 neighbor clouds\n",
+-    "       0101 --- no retrieval (cloudy, or whatever)\n",
+-    "       0110 --- no retrievals near detected or previously snow\n",
+-    "       0111 --- Climatology AOT: altituide above 3.5km(water), and 4.2km(land)\n",
+-    "       1000 --- no retrieval due to sun glint\n",
+-    "       1001 --- retrieved AOT is very low (<0.05) due to glint\n",
+-    "       1010 --- AOT within +-2km from the coastline is replaced by nearby AOT\n",
+-    "       1011 --- Land, Reserach Quality: AOT retrieved but CM is possibly cloudy\n",
+-    "12    Glint mask\n",
+-    "       0 --- glint is not detected\n",
+-    "       1 --- glint is detected\n",
+-    "13-14 Aerosol model\n",
+-    "       00 --- background model\n",
+-    "       01 --- Smoke model\n",
+-    "       10 --- Dust model\n",
+-    "15  Reserved",
+-    "" ;
+-		AOT_QA:_FillValue = 0s ;
+-		AOT_QA:valid_range = 0s, 255s ;
+-	byte AOT_MODEL(Orbits:grid1km, YDim:grid1km, XDim:grid1km) ;
+-		AOT_MODEL:long_name = "AOT model used in retrieval" ;
+-		AOT_MODEL:unit = "none" ;
+-		AOT_MODEL:_FillValue = '\377' ;
+-		AOT_MODEL:valid_range = '\0', '\12' ;
+-	float Injection_Height(Orbits:grid1km, YDim:grid1km, XDim:grid1km) ;
+-		Injection_Height:long_name = "Smoke Injection Height over local surface height, in km" ;
+-		Injection_Height:unit = "meter" ;
+-		Injection_Height:_FillValue = -99999.f ;
+-		Injection_Height:valid_range = 0.f, 0.f ;
