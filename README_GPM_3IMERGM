@@ -1,0 +1,84 @@
+This README file was generated on 2025-01-25 by Maria Fernanda Valle Seijo.
+------------------------------------------------------------------------------------------------------------------------------------
+GENERAL INFORMATION
+
+Title of Dataset: GPM IMERG Final Precipitation L3 1 month 0.1 degree x 0.1 degree V07 (GPM_3IMERGM)
+
+Responsible for collecting the data:
+- Name: George J. Huffman
+- ORCID: 0000-0003-3858-8308
+- Institution: Goddard Space Flight Center, Greenbelt, MD, USA
+- Email: george.j.huffman@nasa.gov
+
+Date of data collection: 04/11/2024
+Information about geographic location of data collection: -63.3870989919999985,-36.0441238820000009, -52.9739094979999976,-21.7195677349999983
+
+------------------------------------------------------------------------------------------------------------------------------------
+DATA & FILE OVERVIEW
+
+Version 07 B is the current version of the IMERG data sets. Older versions will no longer be available and have been superseded by Version 07.
+
+The Integrated Multi-satellitE Retrievals for GPM (IMERG) is the unified U.S. algorithm that provides the multi-satellite precipitation product for the U.S. GPM team.
+
+The precipitation estimates from the various precipitation-relevant satellite passive microwave (PMW) sensors comprising the GPM constellation are computed using the 2021 version of the Goddard Profiling Algorithm (GPROF2021), then gridded, intercalibrated to the GPM Combined Ku Radar-Radiometer Algorithm (CORRA) product, and merged into half-hourly 0.1°x0.1° (roughly 10x10 km) fields. Note that CORRA is adjusted to the monthly Global Precipitation Climatology Project (GPCP) Satellite-Gauge (SG) product over high-latitude ocean to correct known biases.
+
+File List: g4.areaAvgTimeSeries.GPM_3IMERGM_07_precipitation.20171201-20221231.63W_36S_52W_21S.csv
+
+------------------------------------------------------------------------------------------------------------------------------------
+SHARING/ACCESS INFORMATION
+
+Licenses/restrictions placed on the data: GPM and TRMM data are freely available at all levels for which the particular sensor or sensor combination has been processed by GPM. For the GPM Core Observatory this is for Levels 0 through 3 products (as applicable).  For the partner satellites in the GPM constellation this is Levels 1c through 3 (as applicable). Users are encouraged to access data from the primary GPM and TRMM archives (i.e. nasa.gov domains at Goddard Space Flight Center). When data from secondary archives are used, it is incumbent on the user to verify that the data values accessed are accurate, up-to-date, current-version copies of the original data. Data format questions should be directed to the relevant archive site, while science questions should be sent to the dataset developers. Finally, dataset users are asked to report errors and difficulties in the dataset to the dataset creators using the contact form below.
+
+Links to publicly accessible locations of the data: 
+- https://gpm.nasa.gov/
+- https://giovanni.gsfc.nasa.gov/giovanni/
+
+Recommended citation for this dataset:
+- Huffman, G.J., E.F. Stocker, D.T. Bolvin, E.J. Nelkin, Jackson Tan (2023), GPM IMERG Final Precipitation L3 1 month 0.1 degree x 0.1 degree V07, Greenbelt, MD, Goddard Earth Sciences Data and Information Services Center (GES DISC), Accessed: [Data Access Date], 10.5067/GPM/IMERG/3B-MONTH/07
+
+Date of data creation: 04/11/2024
+------------------------------------------------------------------------------------------------------------------------------------
+METHODOLOGICAL INFORMATION
+
+Description of methods used for collection/generation of data:
+
+- Algorithm Theoretical Basis Document (ATBD): https://arthurhou.pps.eosdis.nasa.gov/Documents/IMERG_V07_ATBD_final.pdf
+- README Document for the GPM Data: https://gpm1.gesdisc.eosdis.nasa.gov/data/GPM_L3/doc/README.GPM.pdf
+- IMERG V07 Release Notes: https://gpm.nasa.gov/resources/documents/imerg-v07-release-notes 
+
+Description of methods used for data processing
+- Data were obtained from Giovanni platform (https://giovanni.gsfc.nasa.gov/giovanni/)
+- type of data: Area Average Time Series (csv format)
+- type of plot: Time averaged map (tif format)
+- Date range:  2017/12/01-2022/12/31
+- Bounding box: 63 W,36 S, 52 W ,21 S
+                                            
+
+------------------------------------------------------------------------------------------------------------------------------------
+DATA-SPECIFIC INFORMATION 
+
+Shortname: GPM_3IMERGM
+Longname: GPM IMERG Final Precipitation L3 1 month 0.1 degree x 0.1 degree V07
+DOI: 10.5067/GPM/IMERG/3B-MONTH/07
+Version: 07
+Format: HDF5
+Spatial Coverage: -180.0,-90.0,180.0,90.0
+Temporal Coverage: 1998-01-01 to  2024-07-31
+File Size: 30 MB per file
+Data Resolution Spatial: 0.1 ° x 0.1 °
+Temporal: 1 month
+
+variables:
+
+Variable	                            Shortname	                          Units
+Grid/time                           	Grid/time	                          seconds since 1980-01-06 00:00:00 UTC
+Grid/lon                            	Grid/lon	                          degrees_east
+Grid/lat 	                            Grid/lat	                          degrees_north
+Grid/time_bnds 	                      Grid/time_bnds	                    seconds since 1980-01-06 00:00:00 UTC
+Grid/lon_bnds                       	Grid/lon_bnds	                      degrees_east
+Grid/lat_bnds 	                      Grid/lat_bnds	                      degrees_north
+Grid/precipitation 	                  Grid/precipitation	                mm/hr
+Grid/randomError 	                    Grid/randomError	                  mm/hr
+Grid/gaugeRelativeWeighting 	        Grid/gaugeRelativeWeighting	        percent
+Grid/probabilityLiquidPrecipitation 	Grid/probabilityLiquidPrecipitation	percent
+Grid/precipitationQualityIndex 	      Grid/precipitationQualityIndex	
