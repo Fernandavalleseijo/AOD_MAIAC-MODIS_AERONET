@@ -11,9 +11,9 @@ library(lubridate)
 # Paths (the only thing to modify) ·············································
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-met_path <- "C:/Users/Fer/OneDrive/FERNANDA/DOCTORADO/TRABAJOS/Prueba_DSCOVR_EPIC_MAIAC/Meteorologia/"
+met_path <- ""
 
-plot_path <- "C:/Users/Fer/OneDrive/FERNANDA/DOCTORADO/TRABAJOS/Prueba_DSCOVR_EPIC_MAIAC/PLOTS/Meteorologia/"
+plot_path <- ""
 
 
 pp <- read.csv(paste0(met_path, "g4.areaAvgTimeSeries.GPM_3IMERGM_07_precipitation.20171201-20221231.63W_36S_52W_21S.csv"))
