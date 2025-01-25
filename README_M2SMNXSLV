@@ -1,0 +1,67 @@
+This README file was generated on 2025-01-25 by Maria Fernanda Valle Seijo.
+------------------------------------------------------------------------------------------------------------------------------------
+GENERAL INFORMATION
+
+Title of Dataset: MERRA-2 statM_2d_slv_Nx: 2d,Monthly,Aggregated Statistics,Single-Level,Assimilation,Single-Level Diagnostics V5.12.4 (M2SMNXSLV)
+
+Responsible for collecting the data (CEILAP-BA Station):
+- Name: Global Modeling and Assimilation Office (GMAO) 
+- ORCID: NA
+- Institution: Goddard Earth Sciences Data and Information Services Center (GES DISC), Greenbelt, MD, USA
+- Email: gsfc-dl-help-disc@mail.nasa.gov
+
+Date of data collection: 04/11/2024
+Information about geographic location of data collection: -63.3870989919999985,-36.0441238820000009, -52.9739094979999976,-21.7195677349999983
+
+------------------------------------------------------------------------------------------------------------------------------------
+DATA & FILE OVERVIEW
+
+M2SMNXSLV (or statM_2d_slv_Nx) is a 2-dimensional monthly mean data collection in Modern-Era Retrospective analysis for Research and Applications version 2 (MERRA-2). This collection consists of monthly mean of daily statistics, such as daily mean (or daily minimum and maximum) air temperature at 2-meter, and maximum precipitation rate during the period. The collection also includes the variance of parameters.
+
+MERRA-2 is the latest version of global atmospheric reanalysis for the satellite era produced by NASA Global Modeling and Assimilation Office (GMAO) using the Goddard Earth Observing System Model (GEOS) version 5.12.4. The dataset covers the period of 1980-present with the latency of ~3 weeks after the end of a month.
+
+File List: g4.areaAvgTimeSeries.M2SMNXSLV_5_12_4_T2MMEAN.20171201-20221231.63W_36S_52W_21S.csv
+
+------------------------------------------------------------------------------------------------------------------------------------
+SHARING/ACCESS INFORMATION
+
+Licenses/restrictions placed on the data: 
+- Please Note: If you use MERRA-2 data in your scientific studies, we request that you include citations to these data in the reference lists of your publication manuscripts. Each MERRA-2 file collection has its own citable DOI. Tables of the MERRA-2 data collection DOIs, and example text for their citation are shown below.
+
+Links to publicly accessible locations of the data: https://aeronet.gsfc.nasa.gov/new_web/draw_map_display_aod_v3.html
+
+Recommended citation for this dataset:
+- Global Modeling and Assimilation Office (GMAO) (2015), MERRA-2 statM_2d_slv_Nx: 2d,Monthly,Aggregated Statistics,Single-Level,Assimilation,Single-Level Diagnostics V5.12.4, Greenbelt, MD, USA, Goddard Earth Sciences Data and Information Services Center (GES DISC), Accessed: [Data Access Date], 10.5067/KVIMOMCUO83U 
+
+Date of data creation: 04/11/2024
+------------------------------------------------------------------------------------------------------------------------------------
+METHODOLOGICAL INFORMATION
+
+Description of methods used for collection/generation of data:
+
+These GMAO Technical Memoranda document aspects of the MERRA-2 system:
+- Description of the observation corrected precipitation process used in MERRA-2: Reichle, R., Q. Liu, R. Koster, C. Draper, S. Mahanama, and G. Partyka, 2017. Land Surface Precipitation in MERRA-2. J. Clim. doi:10.1175/JCLI-D-16-0570.1 Link.
+- Description of the GEOS-5 model changes between the MERRA and MERRA-2 systems: Molod, A., Takacs, L., Suarez, M., and Bacmeister, J., 2015: Development of the GEOS-5 atmospheric general circulation model: evolution from MERRA to MERRA2, Geosci. Model Dev., 8, 1339-1356, doi:10.5194/gmd-8-1339-2015. Link.
+- Description of the mass constraint used in MERRA-2: Takacs, L. L., M. Suarez, and R. Todling, 2015. Maintaining Atmospheric Mass and Water Balance Within Reanalysis. NASA/TM–2014-104606, Vol. 37 Document.
+
+Description of methods used for data processing
+- Data were obtained from Giovanni platform (https://giovanni.gsfc.nasa.gov/giovanni/#service=TmAvMp&starttime=&endtime=)
+- type of data: Area Average Time Series (csv format)
+- type of plot: Time averaged map (tif format)
+- Date range:  2017/12/01-2022/12/31
+- Bounding box: 63 W,36 S, 52 W ,21 S
+                                            
+
+------------------------------------------------------------------------------------------------------------------------------------
+DATA-SPECIFIC INFORMATION 
+
+Shortname:M2SMNXSLV
+Longname:MERRA-2 statM_2d_slv_Nx: 2d,Monthly,Aggregated Statistics,Single-Level,Assimilation,Single-Level Diagnostics V5.12.4
+DOI:10.5067/KVIMOMCUO83U
+Version:5.12.4
+Format: netCDF
+Spatial Coverage: -180.0,-90.0,180.0,90.0
+Temporal Coverage: 1980-01-01 to  2024-11-30
+File Size :1.7 MB per file
+Data Resolution Spatial: 0.5 ° x 0.625 °
+Temporal: 1 month
