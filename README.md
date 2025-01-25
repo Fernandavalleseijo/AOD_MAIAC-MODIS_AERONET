@@ -9,7 +9,7 @@ To get started:
 
 1. Clone the repository to your local machine:
 ```
-git clone [repository link]
+git clone https://github.com/Fernandavalleseijo/AOD_MAIAC-MODIS_AERONET
 ```
 
 2. Install the necessary R packages using the renv environment or by reviewing the sessionInfo() details included in the documentation.
