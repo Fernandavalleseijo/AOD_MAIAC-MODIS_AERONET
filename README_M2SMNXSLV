@@ -4,7 +4,7 @@ GENERAL INFORMATION
 
 Title of Dataset: MERRA-2 statM_2d_slv_Nx: 2d,Monthly,Aggregated Statistics,Single-Level,Assimilation,Single-Level Diagnostics V5.12.4 (M2SMNXSLV)
 
-Responsible for collecting the data (CEILAP-BA Station):
+Responsible for collecting the data:
 - Name: Global Modeling and Assimilation Office (GMAO) 
 - ORCID: NA
 - Institution: Goddard Earth Sciences Data and Information Services Center (GES DISC), Greenbelt, MD, USA
@@ -28,7 +28,9 @@ SHARING/ACCESS INFORMATION
 Licenses/restrictions placed on the data: 
 - Please Note: If you use MERRA-2 data in your scientific studies, we request that you include citations to these data in the reference lists of your publication manuscripts. Each MERRA-2 file collection has its own citable DOI. Tables of the MERRA-2 data collection DOIs, and example text for their citation are shown below.
 
-Links to publicly accessible locations of the data: https://aeronet.gsfc.nasa.gov/new_web/draw_map_display_aod_v3.html
+Links to publicly accessible locations of the data: 
+- https://gmao.gsfc.nasa.gov/reanalysis/merra-2/
+- https://giovanni.gsfc.nasa.gov/giovanni/
 
 Recommended citation for this dataset:
 - Global Modeling and Assimilation Office (GMAO) (2015), MERRA-2 statM_2d_slv_Nx: 2d,Monthly,Aggregated Statistics,Single-Level,Assimilation,Single-Level Diagnostics V5.12.4, Greenbelt, MD, USA, Goddard Earth Sciences Data and Information Services Center (GES DISC), Accessed: [Data Access Date], 10.5067/KVIMOMCUO83U 
@@ -45,11 +47,11 @@ These GMAO Technical Memoranda document aspects of the MERRA-2 system:
 - Description of the mass constraint used in MERRA-2: Takacs, L. L., M. Suarez, and R. Todling, 2015. Maintaining Atmospheric Mass and Water Balance Within Reanalysis. NASA/TM–2014-104606, Vol. 37 Document.
 
 Description of methods used for data processing
-- Data were obtained from Giovanni platform (https://giovanni.gsfc.nasa.gov/giovanni/#service=TmAvMp&starttime=&endtime=)
+- Data were obtained from Giovanni platform (https://giovanni.gsfc.nasa.gov/giovanni/)
 - type of data: Area Average Time Series (csv format)
 - type of plot: Time averaged map (tif format)
 - Date range:  2017/12/01-2022/12/31
-- Bounding box: 63 W,36 S, 52 W ,21 S
+- Bounding box: 63 W, 36 S, 52 W, 21 S
                                             
 
 ------------------------------------------------------------------------------------------------------------------------------------
