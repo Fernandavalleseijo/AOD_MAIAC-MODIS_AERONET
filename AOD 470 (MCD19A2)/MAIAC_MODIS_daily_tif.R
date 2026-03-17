@@ -6,10 +6,10 @@ library(sf)
 library(terra)
 library(ggplot2)
 library(ggspatial)
-library(rlang)        # Para ggmap
-library(vctrs)        # Para ggmap
-library(ggmap)        # Para agregar mapa base a los plots de ggplot
-library(scales)       # oob=squish de de ggplot
+library(rlang)        # For ggmap
+library(vctrs)        # For ggmap
+library(ggmap)        # For adding map base in gplots
+library(scales)       # oob=squish function applied ggplot
 library(osmdata)
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -17,16 +17,38 @@ library(osmdata)
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 # Directory to search for .hdf files
-hdf_path <- "C:/Users/Fer/OneDrive/FERNANDA/DOCTORADO/TRABAJOS/Prueba_DSCOVR_EPIC_MAIAC/MCD19A2_061_2017/"
+hdf_path <- "C:/Users/"  # Change this to your desired output directory
 
 # Directory to save output .tiff files
-output_directory <- "C:/Users/Fer/OneDrive/FERNANDA/DOCTORADO/TRABAJOS/Prueba_DSCOVR_EPIC_MAIAC/OUTPUT_MAIAC_2017"  # Change this to your desired output directory
+output_directory <- "C:/Users/"  # Change this to your desired output directory
+
+# Path of region of interest (ROI) 
+ROI <- "C:/Users/"  # Change this to your desired output directory
+
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# ROI as sf object  ····························································
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+# ROI Vector in crs = Long-Lat 
+StudyRegion <- read_sf(ROI)
+
+# Raster Projection - Sinusoidal - (MAIAC MCD19A2 V61)
+proj_sinu <- terra::crs("ESRI:53008") 
+
+# Longitude Latitude Projection (Most commonly used)
+proj_longlat <- terra::crs("EPSG:4326")
+
+# ROI Vector in crs = Sinusoidal 
+StudyRegion_sinu <- st_transform(StudyRegion, crs=proj_sinu)
+
+# To use in terra:crop (Because rasters are in sinusoidal projection)
+extent = terra::ext(StudyRegion_sinu)
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # Files ·······································································
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-# HDF files divided by tile related to the area of study
+# HDF files divided by tile related to the area of study (ROI = Southerneast South America)
 files_h12v11 <- dir(path = hdf_path, pattern="h12v11", full.names=TRUE)
 files_h12v12 <- dir(path = hdf_path, pattern="h12v12", full.names=TRUE) 
 files_h13v11 <- dir(path = hdf_path, pattern="h13v11", full.names=TRUE)
@@ -42,7 +64,6 @@ all_file_lists <- list(
 
 # Get the maximum length of the files across all tiles
 max_length <- max(sapply(all_file_lists, length))
-
 
 #------------------------------------------------------------------------------
 # Check missing files for each tile and organize all tiles together 
@@ -77,7 +98,7 @@ file_list <- vector("list", length = max_length)
     }
   }
   
-  # Convert the list to a vector (optional)
+  # Convert the list to a vector
   file_list <- unlist(file_list)
   
   return(file_list)
@@ -106,28 +127,6 @@ rm(file_list_h12v11)
 rm(file_list_h12v12)
 rm(file_list_h13v11)
 rm(file_list_h13v12)
-
-#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-# Region of interest (ROI) ·····················································
-#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-# Path of region of interest (ROI) 
-ROI_path <- "C:/Users/Fer/OneDrive/FERNANDA/DOCTORADO/TRABAJOS/Prueba_DSCOVR_EPIC_MAIAC/"
-
-# Raster Projection - Sinusoidal - (MAIAC MCD19A2 V61)
-proj_sinu <- terra::crs("ESRI:53008") 
-
-# Longitude Latitude Projection (Most commonly used)
-proj_longlat <- terra::crs("EPSG:4326")
-
-# ROI Vector in crs = Long-Lat 
-StudyRegion <- read_sf(paste(ROI_path,'StudyArea_Tesis.kml', sep = ""))
-
-# ROI Vector in crs = Sinusoidal 
-StudyRegion_sinu <- st_transform(StudyRegion, crs=proj_sinu)
-
-# To use in terra:crop (Because rasters are in sinusoidal projection)
-extent = terra::ext(StudyRegion_sinu)
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # Function to extract QA for AOD bits (8-11) inside the loop ···················
