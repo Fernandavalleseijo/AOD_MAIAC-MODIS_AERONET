@@ -19,7 +19,7 @@ base_path <- "C:/Users/"
 # Output .csv files
 csv_path <- "C:/Users/" # WARNING: "all_time_stamps.csv" from orbit_time_staps.R has to be created to use this code!!
 
-# Path of region of interest (ROI)  --> 'Ceilap_win_25km.kml' location
+# Path of region of interest (ROI)  --> 'Montevideo_win_25km.kml' location
 ROI_path <-  "C:/Users/"
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
