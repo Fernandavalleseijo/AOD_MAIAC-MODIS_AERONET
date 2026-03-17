@@ -9,15 +9,27 @@ library(purrr)
 
 library(ggplot2)
 library(ggspatial)
-library(scales) # oob=squish()
+library(scales) # for oob=squish()
+
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# Paths (the only thing to modify) ·············································
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+# Define the path where your .tif files are located
+annual_tif_path <- "C:/Users/" # Change this to your desired directory
+
+# Define the path where your want to save the plots
+plots_path <- "C:/Users/" # Change this to your desired output directory
+
+# Optional: add international and provincial boundaries to the plot 
+kml_path <- "C:/Users/" # Change this to your desired directory where .kml files of boundaries are saved
+
+LimiteInt <- read_sf(paste(kml_path,'Limite_Internacional.kml', sep = ""))
+LimiteProv <- read_sf(paste(kml_path,'LimiteProvincial.kml', sep = ""))
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # Annual .tif files as raster
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-
-# Define the path where your .tif files are located
-annual_tif_path <- "C:/Users/Fer/OneDrive/FERNANDA/DOCTORADO/TRABAJOS/Prueba_DSCOVR_EPIC_MAIAC/OUTPUT_MAIAC_Annual_tif"
 
 # Get a list of .tif files in the folder divided per mean or st. dev,
 annual_mean <- list.files(path = annual_tif_path, pattern = "meanAOD", full.names = TRUE)
@@ -27,7 +39,6 @@ annual_sd <- list.files(path = annual_tif_path, pattern = "sdAOD", full.names = 
 annual_mean_rast <- lapply(annual_mean, rast)
 annual_sd_rast <- lapply(annual_sd, rast)
 
-
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # PLOT | ANNUAL MEAN AOD 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -35,16 +46,8 @@ annual_sd_rast <- lapply(annual_sd, rast)
 # Raster data to data frame to use it in ggplot
 annual_mean_df <- lapply(annual_mean_rast, as.data.frame, xy = TRUE)
 
-# Vector data
-kml_path <- "C:/Users/Fer/OneDrive/FERNANDA/DOCTORADO/TRABAJOS/Prueba_DSCOVR_EPIC_MAIAC/KML/"
-
-LimiteInt <- read_sf(paste(kml_path,'Limite_Internacional.kml', sep = ""))
-LimiteProv <- read_sf(paste(kml_path,'LimiteProvincial.kml', sep = ""))
-
 # Bar colours
 colfunc <-colorRampPalette(c("darkblue", "blue", "cyan", "green", "yellow", "red", "darkred"))
-
-plots_path <- "C:/Users/Fer/OneDrive/FERNANDA/DOCTORADO/TRABAJOS/Prueba_DSCOVR_EPIC_MAIAC/PLOTS/MAIAC_MODIS_Annual"
 
 years <- c(2018,2019, 2020, 2021, 2022)
 
@@ -59,18 +62,19 @@ for(i in 1:length(annual_mean_df)) {
     geom_sf(data = LimiteInt, color = "black", fill = NA, size = 1) +
     geom_sf(data = LimiteProv, color = "black", fill = NA, size = 1) +
     
+    # Set extent
     coord_sf(xlim = c(-63.3871, -52.97391), 
              ylim = c(-36.04412, -21.71957), 
-             expand = FALSE) +  # Set ext
+             expand = FALSE) +  
     
-    # Escala de valores de latitud-longitud
+    # Set value scales for Lat and Lon values
     scale_x_continuous(breaks = c(-60, -55), labels=c('60ºW','55ºW'))+
     scale_y_continuous(breaks = c(-34, -30, -26, -22), labels=c('34ºS','30ºS', '26ºS', '22ºS'))+
     
-    # Escala de valores del mapa y sus colores
+    # Set value scales for colors from the map 
     scale_fill_gradientn(colours = colfunc(7),
                          limits = c(0.0, 0.5), 
-                         breaks = c(0.0, 0.1, 0.2, 0.3, 0.4, 0.5), #chequear con valores maximos y minimos
+                         breaks = c(0.0, 0.1, 0.2, 0.3, 0.4, 0.5), # Check if this values fit your values or change it 
                          oob=squish, 
                          guide=guide_colorbar(title="Mean AOD 0.47 (MAIAC-MODIS)",
                                               title.position = "right",  # Position the title at the top of the color bar
@@ -78,19 +82,20 @@ for(i in 1:length(annual_mean_df)) {
                                               title.theme = element_text(angle = 90, vjust = 1),  # Rotate the title vertically
                                               nbin=100, 
                                               barheight=unit(0.80, "npc")))+
-    labs(
+  # Changed x and y labels
+  labs(
       x = "Longitude",
       y = "Latitude")   # Changed fill label to "Mean AOD"
   
   
-  # Se agrega la flecha del norte y la barra de escala 
+  # Scale bar and North arrow
   Plots_anuales[[i]] <- Plots_anuales[[i]] +
     ggspatial::annotation_scale(location = "bl", bar_cols = c("black", "white")) +
     ggspatial::annotation_north_arrow(location = "tr", 
                                       which_north = "true", 
                                       pad_x = unit(0.1, "cm"), pad_y = unit(0.3, "cm"),
                                       style = north_arrow_fancy_orienteering)
-  # Se arreglan los tamaños de letras
+  # Arrange size of words
   Plots_anuales[[i]] <- Plots_anuales[[i]] + 
     theme(
       axis.text.x = element_text(size = 30, family = "Times New Roman"),
@@ -100,7 +105,8 @@ for(i in 1:length(annual_mean_df)) {
       legend.title = element_text(size = 30, family = "Times New Roman"),
       legend.text = element_text(size = 30, family = "Times New Roman")  # Optionally adjust legend text size
     )
-  
+
+  # Save plots with the desired size
   ggsave(Plots_anuales[[i]],
          path = plots_path, 
          filename = paste0("AOD_mean_",years[i],".png"), 
@@ -115,16 +121,8 @@ for(i in 1:length(annual_mean_df)) {
 # Raster data
 annual_sd_df <- lapply(annual_sd_rast, as.data.frame, xy = TRUE)
 
-# Vector data
-kml_path <- "C:/Users/Fer/OneDrive/FERNANDA/DOCTORADO/TRABAJOS/Prueba_DSCOVR_EPIC_MAIAC/"
-
-LimiteInt <- read_sf(paste(kml_path,'Limite_Internacional.kml', sep = ""))
-LimiteProv <- read_sf(paste(kml_path,'LimiteProvincial.kml', sep = ""))
-
 # Bar colours
 colfunc <-colorRampPalette(c("darkblue", "blue", "cyan", "green", "yellow", "red", "darkred"))
-
-plots_path <- "C:/Users/Fer/OneDrive/FERNANDA/DOCTORADO/TRABAJOS/Prueba_DSCOVR_EPIC_MAIAC/PLOTS/MAIAC_MODIS_Annual"
 
 Plots_anuales = list()
 
@@ -141,14 +139,14 @@ for(i in 1:length(annual_sd_df)) {
              ylim = c(-36.04412, -21.71957), 
              expand = FALSE) +  # Set ext
     
-    # Escala de valores de latitud-longitud
+    # Set value scales for Lat and Lon values
     scale_x_continuous(breaks = c(-60, -55), labels=c('60ºW','55ºW'))+
     scale_y_continuous(breaks = c(-34, -30, -26, -22), labels=c('34ºS','30ºS', '26ºS', '22ºS'))+
     
-    # Escala de valores del mapa y sus colores
+    # Set value scales for colors from the map 
     scale_fill_gradientn(colours = colfunc(7),
                          limits = c(0.0, 0.5), 
-                         breaks = c(0.0, 0.1, 0.2, 0.3, 0.4, 0.5), #chequear con valores maximos y minimos
+                         breaks = c(0.0, 0.1, 0.2, 0.3, 0.4, 0.5), # Check if this values fit your values or change it
                          oob=squish, 
                          guide=guide_colorbar(title="Mean AOD 0.47 (MAIAC-MODIS)",
                                               title.position = "right",  # Position the title at the top of the color bar
@@ -156,19 +154,21 @@ for(i in 1:length(annual_sd_df)) {
                                               title.theme = element_text(angle = 90, vjust = 1),  # Rotate the title vertically
                                               nbin=100, 
                                               barheight=unit(0.80, "npc")))+
+    # Changed x and y labels  
     labs(
       x = "Longitude",
       y = "Latitude")   # Changed fill label to "Mean AOD"
   
   
-  # Se agrega la flecha del norte y la barra de escala 
+  # Scale bar and North arrow
   Plots_anuales[[i]] <- Plots_anuales[[i]] +
     ggspatial::annotation_scale(location = "bl", bar_cols = c("black", "white")) +
     ggspatial::annotation_north_arrow(location = "tr", 
                                       which_north = "true", 
                                       pad_x = unit(0.1, "cm"), pad_y = unit(0.3, "cm"),
                                       style = north_arrow_fancy_orienteering)
-  # Se arreglan los tamaños de letras
+
+ # Arrange size of words
   Plots_anuales[[i]] <- Plots_anuales[[i]] + 
     theme(
       axis.text.x = element_text(size = 30, family = "Times New Roman"),
@@ -178,7 +178,7 @@ for(i in 1:length(annual_sd_df)) {
       legend.title = element_text(size = 30, family = "Times New Roman"),
       legend.text = element_text(size = 30, family = "Times New Roman")  # Optionally adjust legend text size
     )
-  
+  # Save plots with the desired size
   ggsave(Plots_anuales[[i]],
          path = plots_path, 
          filename = paste0("AOD_sd_",years[i],".png"), 
