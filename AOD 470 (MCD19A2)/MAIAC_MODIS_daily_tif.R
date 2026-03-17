@@ -17,13 +17,13 @@ library(osmdata)
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 # Directory to search for .hdf files
-hdf_path <- "C:/Users/"  # Change this to your desired output directory
+hdf_path <- "C:/Users/"  # Change this to your desired directory
 
 # Directory to save output .tiff files
 output_directory <- "C:/Users/"  # Change this to your desired output directory
 
 # Path of region of interest (ROI) 
-ROI <- "C:/Users/"  # Change this to your desired output directory
+ROI <- "C:/Users/"  # Change this to your desired directory
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # ROI as sf object  ····························································
