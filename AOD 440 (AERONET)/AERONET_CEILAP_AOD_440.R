@@ -1,16 +1,16 @@
-#Librerias·····································································
+#Libraries·····································································
 
 library(ggplot2)
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-# Archivos ·····································································
+# Files ·····································································
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-# Path de archivos AERONET  
+# Insert path to files where data from AERONET is stored   
 
-path_Aeronet <- "C:/Users/Fer/OneDrive/FERNANDA/DOCTORADO/TRABAJOS/Prueba_DSCOVR_EPIC_MAIAC/AERONET_CELIAP/"
+path_Aeronet <- "C:/Users/"
 
-# Define the file paths in a list
+# Define the file paths in a list for each year
 file_paths <- c(
   paste(path_Aeronet, '20171201_20171231_CEILAP-BA.lev20', sep = ""),
   paste(path_Aeronet, '20180101_20181231_CEILAP-BA.lev20', sep = ""),
@@ -25,6 +25,7 @@ data_frames <- list()
 
 # Loop through each file path
 for (file_path in file_paths) {
+  
   # Read the file as character strings
   Aeronet_AOD <- readLines(file_path)
   
@@ -53,7 +54,7 @@ for (file_path in file_paths) {
 # Combine all data frames from all files into one single data frame
 combined_df <- do.call(rbind, data_frames)
 
-
+# Define column names of AERONET files
 column_names <- c("Date(dd:mm:yyyy)", "Time(hh:mm:ss)", "Day_of_Year", "Day_of_Year(Fraction)",
                   "AOD_1640nm", "AOD_1020nm", "AOD_870nm", "AOD_865nm", "AOD_779nm", "AOD_675nm",
                   "AOD_667nm", "AOD_620nm", "AOD_560nm", "AOD_555nm", "AOD_551nm", "AOD_532nm", 
@@ -96,11 +97,11 @@ column_names <- c("Date(dd:mm:yyyy)", "Time(hh:mm:ss)", "Day_of_Year", "Day_of_Y
 # Assign the column names to the data frame
 colnames(combined_df) <- column_names
 
-#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-# AOD_440 ANNUAL ·······························································
-#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# AOD_440 ANNUAL CSV FILE·······························································
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-# Create a new data frame only for AOD at 440 nm
+# Substract variables of interest
 AOD_440 <- combined_df[, c("Date(dd:mm:yyyy)", "Day_of_Year", "Time(hh:mm:ss)",  "AOD_440nm", "Data_Quality_Level")]
 
 # Check if data quality is always Level 2.0
@@ -121,7 +122,8 @@ AOD_440$year <- as.numeric(substr(AOD_440$`Date(dd:mm:yyyy)`, 7, 10))
 
 AOD_440 <- AOD_440[, c("year", "Day_of_Year", "Time(hh:mm:ss)", "AOD_440nm")]
 
+# Save as .csv format 
 write.csv(AOD_440, 
-          file = "C:/Users/Fer/OneDrive/FERNANDA/DOCTORADO/TRABAJOS/Prueba_DSCOVR_EPIC_MAIAC/OUTPUT_CSV/AERONET_CELIAP_AOD440.csv",
+          file = "", # Define path to save .csv file
           row.names = FALSE)
 
