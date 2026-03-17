@@ -1,3 +1,11 @@
+# WARNING: "all_time_stamps.csv" from orbit_time_staps.R has to be created to use this code!!
+
+# WARNING: "MAIAC_MODIS_25km_MONTEVIDEO.csv" from MAIAC_MODIS_25km_MONTEVIDEO.R has to be created to use this code!!
+# WARNING: "AERONET_MONTEVIDEO_AOD440.csv" from AERONET_MONTEVIDEO_AOD440.R has to be created to use this code!!
+
+# WARNING: "MAIAC_MODIS_25km_CEILAP.csv" from MAIAC_MODIS_25km_CEILAP.R has to be created to use this code!!
+# WARNING: "AERONET_CEILAP_AOD440.csv" from AERONET_CEILAP_AOD440.R has to be created to use this code!!
+
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # Libraries ····································································
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -10,17 +18,33 @@ library(ggplot2)
 # Paths (the only thing to modify) ·············································
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-csv_path <- "C:/Users/Fer/OneDrive/FERNANDA/DOCTORADO/TRABAJOS/Prueba_DSCOVR_EPIC_MAIAC/OUTPUT_CSV/"
+csv_path <- "C:/Users/"
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-# Imput CSV Data ·······························································
+# Imput CSV Data (modify depending on the station) ·····························
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
+#-------------------------------------------------------------------------------
+# AERONET DATA (AOD 440 nm)
+#-------------------------------------------------------------------------------
+
+# WARNING: "AERONET_MONTEVIDEO_AOD440.csv" from AERONET_MONTEVIDEO_AOD440.R has to be created to use this code!!
+# WARNING: "AERONET_CEILAP_AOD440.csv" from AERONET_CEILAP_AOD440.R has to be created to use this code!!
+
+# Change .csv file depending on the station (e.g. Montevideo)
 AOD440 <- read.csv(paste0(csv_path, "AERONET_MONTEVIDEO_AOD440.csv"), sep = ",")
 
+#-------------------------------------------------------------------------------
+# MAIAC DATA (AOD 470 nm)
+#-------------------------------------------------------------------------------
+
+# WARNING: "MAIAC_MODIS_25km_MONTEVIDEO.csv" from MAIAC_MODIS_25km_MONTEVIDEO.R has to be created to use this code!!
+# WARNING: "MAIAC_MODIS_25km_CEILAP.csv" from MAIAC_MODIS_25km_CEILAP.R has to be created to use this code!!
+
+# Change .csv file depending on the station (e.g. Montevideo)
 AOD470 <- read.csv(paste0(csv_path, "MAIAC_MODIS_25km_MONTEVIDEO.csv"), sep = ",")
 
-# Rearrange hour and minute from AOD 470 so that in appear all together in a column
+# Rearrange hour and minute from AOD 470 so that it appear all together in a column
 AOD470$time <- sprintf("%02d:%02d", AOD470$hour, AOD470$minute)
 
 # Drop the original 'hour' and 'minute' columns if they're no longer needed
@@ -70,6 +94,10 @@ filtered_result <- na.omit(result)
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # Save data filtered without NA values ·········································
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+# Change depending what station are you working.
+# File name: "AOD440_AOD470_25km_Montevideo.csv" or "AOD440_AOD470_25km_CEILAP.csv"
 
 write.table(filtered_result, paste0(csv_path, "AOD440_AOD470_25km_Montevideo.csv") , sep = ",", row.names = FALSE)
 
