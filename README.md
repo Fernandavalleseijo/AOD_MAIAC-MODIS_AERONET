@@ -1,6 +1,8 @@
 **What does the project do?**
 This project analyzes the aerosol optical depth (AOD at 470 nm and 440 nm) during the 2020 wildfire season in Southeastern South America. It combines satellite-derived data (from MAIAC/MODIS) and ground-based measurements (AERONET) to evaluate the impact of biomass burning on air quality in the region, focusing on cities such as Buenos Aires and Montevideo.
 
+e results of this project are published in a research paper. Please cite it as follows: Valle Seijo, M. F., Otero, L. A., Agesta, A., Frins, E., & Piacentini, R. D. (2026). Assessment of aerosol optical depth using MAIAC and AERONET data during the 2020 wildfire season in southeastern South America. Environmental Pollution, 397, 127940. https://doi.org/10.1016/j.envpol.2026.127940
+
 **Why is the project useful?**
 The project provides critical insights into the effects of wildfires on regional air quality and public health. By integrating satellite and ground-based observations, it improves our understanding of aerosol behavior and offers valuable tools for researchers studying air pollution.
 
