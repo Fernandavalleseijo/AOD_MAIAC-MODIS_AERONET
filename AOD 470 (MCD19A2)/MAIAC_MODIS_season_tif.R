@@ -8,16 +8,27 @@ library(terra)
 library(purrr)
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-# .tif files ···································································
+# Paths (the only thing to modify) ·············································
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 # Define the list of directories (folders) for each year
-years <- c(2017, 2018, 2019, 2020, 2021, 2022)
-folders <- paste0("C:/Users/Fer/OneDrive/FERNANDA/DOCTORADO/TRABAJOS/Prueba_DSCOVR_EPIC_MAIAC/", 
-                  "OUTPUT_MAIAC_",
+years <- c(2018,2019, 2020, 2021, 2022) # Change this depending on how many years you are working with
+folders <- paste0("C:/Users/", # Change this to your desired directory
                   years)
+# Path of region of interest (ROI) 
+ROI_path <- "C:/Users/" # Change this to your desired path where the .kml file is stored
 
-save_path <- "C:/Users/Fer/OneDrive/FERNANDA/DOCTORADO/TRABAJOS/Prueba_DSCOVR_EPIC_MAIAC/OUTPUT_MAIAC_Seasonal_tif"
+save_path <- "C:/Users/" # Change this to your desired output directory
+
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# ROI ··········································································
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+# ROI Vector in crs = Long-Lat 
+StudyRegion <- read_sf(ROI_path)
+
+# To use in terra:crop (Because rasters are in sinusoidal projection)
+extent = terra::ext(StudyRegion)
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # Define seasons ·······························································
@@ -30,17 +41,6 @@ seasons <- list(
   "Winter" = list(c(152, 243)),             # Jun, Jul, Aug
   "Spring" = list(c(244, 334))              # Sep, Oct, Nov
 )
-
-#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-# ROI ··········································································
-#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-# Path of region of interest (ROI) 
-ROI_path <- "C:/Users/Fer/OneDrive/FERNANDA/DOCTORADO/TRABAJOS/Prueba_DSCOVR_EPIC_MAIAC/"
-StudyRegion <- read_sf(paste(ROI_path, 'StudyArea_Tesis.kml', sep = ""))
-
-# To use in terra:crop (Because rasters are in sinusoidal projection)
-extent <- terra::ext(StudyRegion)
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # Function to process seasonal means and st.dev ································
