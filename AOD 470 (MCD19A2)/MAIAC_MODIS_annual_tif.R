@@ -8,24 +8,24 @@ library(terra)
 library(purrr)
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-# .tif files ···································································
+# Paths (the only thing to modify) ·············································
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 # Define the list of directories (folders) for each year
-years <- c(2018,2019, 2020, 2021, 2022)
-folders <- paste0("C:/Users/Fer/OneDrive/FERNANDA/DOCTORADO/TRABAJOS/Prueba_DSCOVR_EPIC_MAIAC/", 
-                  "OUTPUT_MAIAC_",
+years <- c(2018,2019, 2020, 2021, 2022) # Change this depending on how many years you are working with
+folders <- paste0("C:/Users/", # Change this to your desired directory
                   years)
+# Path of region of interest (ROI) 
+ROI_path <- "C:/Users/" # Change this to your desired path where the .kml file is stored
+
+save_path <- "C:/Users/" # Change this to your desired output directory
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # ROI ··········································································
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-# Path of region of interest (ROI) 
-ROI_path <- "C:/Users/Fer/OneDrive/FERNANDA/DOCTORADO/TRABAJOS/Prueba_DSCOVR_EPIC_MAIAC/"
-
 # ROI Vector in crs = Long-Lat 
-StudyRegion <- read_sf(paste(ROI_path,'StudyArea_Tesis.kml', sep = ""))
+StudyRegion <- read_sf(ROI_path)
 
 # To use in terra:crop (Because rasters are in sinusoidal projection)
 extent = terra::ext(StudyRegion)
@@ -33,8 +33,6 @@ extent = terra::ext(StudyRegion)
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # Processing ···································································
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-save_path <- "C:/Users/Fer/OneDrive/FERNANDA/DOCTORADO/TRABAJOS/Prueba_DSCOVR_EPIC_MAIAC/OUTPUT_MAIAC_Annual_tif"
 
 # Loop through each folder, calculate the mean and standard deviation, and save the results
 for (i in seq_along(folders)) {
@@ -53,7 +51,7 @@ for (i in seq_along(folders)) {
   rm(tif_files)
   gc()
   
-  # Crop the files to avoid the blank parts product of the mask from the previous code
+  # Crop the files to avoid the blank parts related to the mask from the previous code
   raster_crop <- map(raster_list, crop, extent)
   
   rm(raster_list)
