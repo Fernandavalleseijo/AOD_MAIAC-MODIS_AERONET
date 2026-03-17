@@ -1,14 +1,14 @@
-#Librerias·····································································
+#Libraries·····································································
 
 library(ggplot2)
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-# Archivos ·····································································
+# Files ·····································································
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-# Path de archivos AERONET  
+# Insert path to files where data from AERONET is stored   
 
-path_Aeronet <- "C:/Users/Fer/OneDrive/FERNANDA/DOCTORADO/TRABAJOS/Prueba_DSCOVR_EPIC_MAIAC/AERONET_CELIAP/"
+path_Aeronet <- "C:/Users/"
 
 # Define the file paths in a list
 file_paths <- c(
@@ -53,7 +53,7 @@ for (file_path in file_paths) {
 # Combine all data frames from all files into one single data frame
 combined_df <- do.call(rbind, data_frames)
 
-
+# Define column names of AERONET files
 column_names <- c("Date(dd:mm:yyyy)", "Time(hh:mm:ss)", "Day_of_Year", "Day_of_Year(Fraction)",
                   "AOD_1640nm", "AOD_1020nm", "AOD_870nm", "AOD_865nm", "AOD_779nm", "AOD_675nm",
                   "AOD_667nm", "AOD_620nm", "AOD_560nm", "AOD_555nm", "AOD_551nm", "AOD_532nm", 
@@ -97,10 +97,10 @@ column_names <- c("Date(dd:mm:yyyy)", "Time(hh:mm:ss)", "Day_of_Year", "Day_of_Y
 colnames(combined_df) <- column_names
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-# Angstrom_Exponent ANNUAL ·······························································
+# Angstrom_Exponent ANNUAL CSV FILE·············································
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-# Create a new data frame only for AOD at 440 nm
+# Substract variables of interest
 Angstrom_Exponent <- combined_df[, c("Date(dd:mm:yyyy)", "Day_of_Year", "Time(hh:mm:ss)", "440-870_Angstrom_Exponent",  "440-675_Angstrom_Exponent", "Data_Quality_Level")]
 
 # Check if data quality is always Level 2.0
@@ -121,7 +121,8 @@ Angstrom_Exponent$year <- as.numeric(substr(Angstrom_Exponent$`Date(dd:mm:yyyy)`
 
 Angstrom_Exponent <- Angstrom_Exponent[, c("year", "Day_of_Year", "Time(hh:mm:ss)", "440-870_Angstrom_Exponent",  "440-675_Angstrom_Exponent")]
 
+# Save as .csv format 
 write.csv(Angstrom_Exponent, 
-          file = "C:/Users/Fer/OneDrive/FERNANDA/DOCTORADO/TRABAJOS/Prueba_DSCOVR_EPIC_MAIAC/OUTPUT_CSV/AERONET_CELIAP_Angstrom_Exponent.csv",
+          file = "", # Define path to save .csv file (add filename too)
           row.names = FALSE)
 
