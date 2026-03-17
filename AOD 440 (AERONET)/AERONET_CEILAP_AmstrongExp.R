@@ -111,7 +111,7 @@ if (all(Angstrom_Exponent$Data_Quality_Level == "lev20")) {
   print("Data_Quality_Level is not 'lev20' for all rows")
 }
 
-# Create a new data frame only for AOD at 440 nm
+# Create a new data frame only for 440-870_Angstrom_Exponent
 Angstrom_Exponent <- combined_df[, c("Date(dd:mm:yyyy)", "Day_of_Year", "Time(hh:mm:ss)","440-870_Angstrom_Exponent",  "440-675_Angstrom_Exponent")]
 
 # Extract day, month and year value of Date(dd:mm:yyyy) column
