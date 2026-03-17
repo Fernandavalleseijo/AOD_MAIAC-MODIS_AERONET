@@ -1,3 +1,6 @@
+# WARNING: "all_time_stamps.csv" from orbit_time_staps.R has to be created to use this code!!
+# WARNING: "AOD440_AOD470_25km_Ceilap.csv" from MAIAC_MODIS_25km_CEILAP.R has to be created to use this code!!
+
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # Libraries ····································································
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -10,13 +13,14 @@ library(ggplot2)
 # Paths (the only thing to modify) ·············································
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-csv_path <- "C:/Users/Fer/OneDrive/FERNANDA/DOCTORADO/TRABAJOS/Prueba_DSCOVR_EPIC_MAIAC/OUTPUT_CSV/"
+csv_path <- "C:/Users/"
 
-plots_path <- "C:/Users/Fer/OneDrive/FERNANDA/DOCTORADO/TRABAJOS/Prueba_DSCOVR_EPIC_MAIAC/PLOTS/AOD470_AOD440_25km/"
+plots_path <- "C:/Users/"
 
+# WARNING: "all_time_stamps.csv" from orbit_time_staps.R has to be created to use this code!!
+# WARNING: "AOD440_AOD470_25km_Ceilap.csv" from MAIAC_MODIS_25km_CEILAP.R has to be created to use this code!!
 
 filtered_result <- read.csv(paste0(csv_path, "AOD440_AOD470_25km_Ceilap.csv"), sep = ",")
-
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # Plot data  ···································································
@@ -129,7 +133,7 @@ Plot_bySat <- ggplot(ideal, aes(x = x, y = y)) +
     xlim =  c(0, 2),
     ylim =  c(0, 2))+
   theme_bw() +
-  facet_wrap(~ satellite, ncol = 2, labeller = labeller(satellite = satellite_labels)) +  # Create separate plots for each satellhttp://127.0.0.1:40719/graphics/80bf4b5a-c430-4b60-b986-468e3a9e6c77.pngite type
+  facet_wrap(~ satellite, ncol = 2, labeller = labeller(satellite = satellite_labels)) +  # Create separate plots for each satellite type
   geom_label(data = stats_summary, 
              aes(x = 0.0, y = 1.55, 
                  label = sprintf("N = %d\nR = %.3f\nRMSE = %.3f\nBias = %.3f\nWithin EE = %.2f%%", 
