@@ -1,19 +1,26 @@
+
+# WARNING: "all_time_stamps.csv" from orbit_time_staps.R has to be created to use this code!!
+
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # Libraries  ···································································
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 library(sf)
 library(terra)
+library(dplyr)
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # Paths (the only thing to modify) ·············································
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-# Base HDF file path (up to the year)
+# Base HDF file path (up to the year folder)
+base_path <- "C:/Users/"
 
-base_path <- "C:/Users/Fer/OneDrive/FERNANDA/DOCTORADO/TRABAJOS/Prueba_DSCOVR_EPIC_MAIAC/MCD19A2_061_"
+# Output .csv files
+csv_path <- "C:/Users/" # WARNING: "all_time_stamps.csv" from orbit_time_staps.R has to be created to use this code!!
 
-csv_path <- "C:/Users/Fer/OneDrive/FERNANDA/DOCTORADO/TRABAJOS/Prueba_DSCOVR_EPIC_MAIAC/OUTPUT_CSV/"
+# Path of region of interest (ROI)  --> 'Ceilap_win_25km.kml' location
+ROI_path <-  "C:/Users/"
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # Files from tile h13v12 (includes AERONET location) ···························
@@ -37,9 +44,6 @@ for (year in 2020:2022) {
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # Region of interest (ROI) ·····················································
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-# Path of region of interest (ROI) 
-ROI_path <- "C:/Users/Fer/OneDrive/FERNANDA/DOCTORADO/TRABAJOS/Prueba_DSCOVR_EPIC_MAIAC/KML/"
 
 # ROI Vector in crs = Long-Lat 
 Montevideo_window_25km <- read_sf(paste(ROI_path,'Montevideo_win_25km.kml', sep = ""))
@@ -202,9 +206,6 @@ for (name in names(results)) {
 
 #------------------------------------------------------------------------------
 # Merge orbit_time_stamps df and combined results df 
-
-# Load dplyr for data manipulation
-library(dplyr)
 
 all_time_stamps <- read.csv(paste0(csv_path, "all_time_stamps.csv"), sep = ",")
 
