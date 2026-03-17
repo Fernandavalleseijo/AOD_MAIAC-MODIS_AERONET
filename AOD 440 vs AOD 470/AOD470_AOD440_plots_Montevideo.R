@@ -1,6 +1,6 @@
 
 # WARNING: "all_time_stamps.csv" from orbit_time_staps.R has to be created to use this code!!
-# WARNING: "AOD440_AOD470_25km_Montevideo.csv" from MAIAC_MODIS_25km_Montevideo.R has to be created to use this code!!
+# WARNING: "AOD440_AOD470_25km_Montevideo.csv" from AOD470_AOD440_csv.R has to be created to use this code!!
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # Libraries ····································································
@@ -19,7 +19,7 @@ csv_path <- "C:/Users/"
 plots_path <- "C:/Users/"
 
 # WARNING: "all_time_stamps.csv" from orbit_time_staps.R has to be created to use this code!!
-# WARNING: "AOD440_AOD470_25km_Montevideo.csv" from MAIAC_MODIS_25km_Montevideo.R has to be created to use this code!!
+# WARNING: "AOD440_AOD470_25km_Montevideo.csv" from AOD470_AOD440_csv.R has to be created to use this code!!
 
 filtered_result <- read.csv(paste0(csv_path, "AOD440_AOD470_25km_Montevideo.csv"), sep = ",")
 
