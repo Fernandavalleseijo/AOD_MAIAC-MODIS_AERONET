@@ -2,10 +2,11 @@
 # Paths (the only thing to modify) ·············································
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-# Base HDF file path (up to the year)
-base_path <- "C:/Users/Fer/OneDrive/FERNANDA/DOCTORADO/TRABAJOS/Prueba_DSCOVR_EPIC_MAIAC/MCD19A2_061_"
+# Base HDF file path (up to the year folder)
+base_path <- "C:/Users/"
 
-csv_path <- "C:/Users/Fer/OneDrive/FERNANDA/DOCTORADO/TRABAJOS/Prueba_DSCOVR_EPIC_MAIAC/OUTPUT_CSV/"
+# Output .csv files
+csv_path <- "C:/Users/"
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # Files from tile h13v12 (includes AERONET location) ···························
@@ -30,9 +31,10 @@ for (year in 2017:2022) {
 # Extract orbit_time_stamps in a data.frame (year, day, hr, min, satellite) ····
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
+# Save metadata from each file in a list
 metadata_list <- lapply(all_files_h13v12, terra::describe)
 
-
+# Extract and save only the "Orbit_time_stamp" data
 orbit_time_stamps <- lapply(metadata_list, function(metadata) {
   metadata[grepl("Orbit_time_stamp", metadata)]
 })
